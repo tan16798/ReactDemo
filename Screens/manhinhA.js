@@ -24,7 +24,7 @@ export default class ManhinhA extends Component{
       <View style = {{flex:1, backgroundColor:"white", opacity:0.5,borderColor:'white',borderWidth:3,alignItems:'center'}}>
        <Text style={{right:'30%'}}>My car is:</Text>
         <SelectCar/>
-        <TouchableOpacity onPress = {()=> this.props.navigation.navigate('mhB',{thamso:'day la tham so'})}>
+        <TouchableOpacity onPress = {()=> this.props.navigation.navigate('mhB',{thamso:'day la tham so'},{block:false})}>
       <Text style = {{color:"black"}}>An vao de truyen tham so</Text>
       </TouchableOpacity>
       
