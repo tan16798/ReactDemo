@@ -41,15 +41,15 @@ export const Tabnav = createMaterialTopTabNavigator(
             return <Icon name={iconName} size={15} color={tintColor} />;
           },
           //BLOCK TAB BAR
-          // tabBarOnPress: ({ navigation, defaultHandler }) => {
-          //   if (
-          //     navigation.state.params.block===true
-          //     // || navigation.state.routeName === "Third"
-          //   ) {
-          //     return null;
-          //   }
-          //   defaultHandler();
-          // },
+          tabBarOnPress: ({ navigation, defaultHandler }) => {
+            if (
+              navigation.state.params.block===true
+              // || navigation.state.routeName === "Third"
+            ) {
+              return null;
+            }
+            defaultHandler();
+          },
         }),
 
         tabBarOptions: {

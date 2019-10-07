@@ -38,11 +38,8 @@ export default class ReactDemo extends Component {
         </View>
         <View style={{flex:1 }}/> */}
 
-        <Stepper>
-      
-        </Stepper>
+      <Stepper/>
 
-      
         </ImageBackground>
          </View>
          
