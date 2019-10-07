@@ -6,7 +6,8 @@ import ConNguoi from "./Components/ConNguoi.js";
 import GetData from "./Components/GetData.js";
 import PostData from "./Components/PostData.js";
 import Tabnav from "./Tabbar.js";
-import ManhinhA from './Screens/manhinhA.js'
+import ManhinhA from './Screens/manhinhA.js';
+import Stepper from './Components/Stepper.js';
 export default class ReactDemo extends Component {
   constructor(props){
     super(props);
@@ -31,11 +32,17 @@ export default class ReactDemo extends Component {
          </TouchableOpacity>
         <ManhinhA ref='mra'/> */}
 
-        <View style={{flex:1}}/>
+        {/* <View style={{flex:1}}/>
         <View style={{flex:5,padding:40, borderWidth:0.5,justifyContent:'center'}}>
         <Tabnav />
         </View>
-        <View style={{flex:1 }}/>
+        <View style={{flex:1 }}/> */}
+
+        <Stepper>
+      
+        </Stepper>
+
+      
         </ImageBackground>
          </View>
          

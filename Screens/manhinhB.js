@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 export default class ManhinhB extends Component{
   constructor(props){
     super(props)
-    props.navigation.setParams({
-      block: true
-    });
+    // props.navigation.setParams({
+    //   block: true
+    // });
   }
   render(){
     return(

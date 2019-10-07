@@ -8,9 +8,9 @@ export default class ManhinhA extends Component{
       car:"",
       navigateallow:true
     }
-    props.navigation.setParams({
-      block: true
-    });
+    // props.navigation.setParams({
+    //   block: true
+    // });
   }
  
 
@@ -23,8 +23,9 @@ export default class ManhinhA extends Component{
     return(
       <View style = {{flex:1, backgroundColor:"white", opacity:0.5,borderColor:'white',borderWidth:3,alignItems:'center'}}>
        <Text style={{right:'30%'}}>My car is:</Text>
+       
         <SelectCar/>
-        <TouchableOpacity onPress = {()=> this.props.navigation.navigate('mhB',{thamso:'day la tham so'}>
+        <TouchableOpacity onPress = {()=> this.props.navigation.navigate('mhB',{thamso:'day la tham so'})}>
       <Text style = {{color:"black"}}>An vao de truyen tham so</Text>
       </TouchableOpacity>
       
