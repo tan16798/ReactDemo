@@ -22,7 +22,7 @@ export const HomeStack = createStackNavigator(
 },
 {initialRouteName:'mhA'}
 );
-const App = createAppContainer(HomeStack);
+const Stacknav = createAppContainer(HomeStack);
 
-export default App;
+export default Stacknav;
 

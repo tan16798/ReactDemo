@@ -1,115 +1,53 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {AppRegistry,View,ImageBackground,Text,TouchableOpacity} from 'react-native';
+import React, {Component} from 'react';
+import Stacknav from './Route.js';
+import ConNguoi from "./Components/ConNguoi.js";
+import GetData from "./Components/GetData.js";
+import PostData from "./Components/PostData.js";
+import Tabnav from "./Tabbar.js";
+import ManhinhA from './Screens/manhinhA.js';
+import Stepper from './Components/Stepper.js';
+import StepIndi from './Components/StepIndicator';
+export default class ReactDemo extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      data:[],
+      refreshing:false,
+      customerid :"",
+      cusinput:"",
+      result:[]
+    }
+  }
+  render() {
+    return(
+   
+      <View style={{flex:1,justifyContent:"center"}}>
+         <ImageBackground style={{width: '100%' , height: '100%'}} 
+      // source={{uri:'http://thuthuatphanmem.vn/uploads/2018/09/11/hinh-anh-dep-2_044126655.jpg'}}>
+       source={require('./image/background.jpg')}>
+         {/* <TouchableOpacity onPress={()=>{console.log(this.refs.mra.state.navigateallow);
+                                        this.refs.mra.block();}}>
+         <Text>clicktest</Text>
+         </TouchableOpacity>
+        <ManhinhA ref='mra'/> */}
 
-import {
+        {/* <View style={{flex:1}}/>
+        <View style={{flex:5,padding:40, borderWidth:0.5,justifyContent:'center'}}>
+        <Tabnav />
+        </View>
+        <View style={{flex:1 }}/> */}
 
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+      {/* <Stepper/> */}
+        <StepIndi/>
+        </ImageBackground>
+         </View>
+         
+         
+    );
+  }
+}
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
-export default App;
