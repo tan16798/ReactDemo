@@ -9,7 +9,7 @@ import Tabnav from "./Tabbar.js";
 import ManhinhA from './Screens/manhinhA.js';
 import Stepper from './Components/Stepper.js';
 import StepIndi from './Components/StepIndicator';
-export default class ReactDemo extends Component {
+export default class AppDemo extends Component {
   constructor(props){
     super(props);
     this.state={
