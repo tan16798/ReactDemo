@@ -1,23 +1,14 @@
-// import {StyleSheet,View,ImageBackground,Text,TouchableOpacity,Image} from 'react-native';
-// import React, {Component} from 'react';
-// import Slider from 'react-native-slider';
-// export default class PlayBar extends Component{
-//     render(){
-//         return(
-//             <View>
-//                 <Slider/>
-//             </View>
-//         );
-//     }
-// }
+
 import React from 'react';
-import {StyleSheet, Text, View, Slider} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Slider from '@react-native-community/slider';
 
 export default class PlayBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: 50,
+      maximumvalue:100
     };
   }
 
@@ -28,17 +19,32 @@ export default class PlayBar extends React.Component {
       };
     });
   }
-
+  timeeslap(value){
+    let minute=Math.floor(value/60).toString().padStart(2,"0");
+    let second =(value%60).toString().padStart(2,"0")
+    return minute + ":" +second;
+  }
+  
   render() {
     const {value} = this.state;
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{String(value)}</Text>
-        <Slider
+        <View style={{flexDirection:"row"}}>
+        <View style={{flex:1}}>
+        <Text style={{color: 'rgba(255, 255, 255, 0.72)',fontSize: 12,textAlign:'left',}}>{this.timeeslap(this.state.value)}</Text>
+        </View>
+        <View style={{flex:1}}>
+        <Text style={{color: 'rgba(255, 255, 255, 0.72)',fontSize: 12,textAlign:'right',}}>{this.timeeslap(this.state.maximumvalue-this.state.value)}</Text>
+        </View>
+        </View>
+        <Slider style={styles.slider}
           step={1}
-          maximumValue={100}
+          maximumValue={this.state.maximumvalue}
           onValueChange={this.change.bind(this)}
-          value={value}
+          value={this.state.value}
+          minimumTrackTintColor='#fff'
+        maximumTrackTintColor='rgba(255, 255, 255, 0.14)'
+        thumbTintColor='#fff'
         />
       </View>
     );
@@ -47,12 +53,12 @@ export default class PlayBar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 16,
   },
-  text: {
-    fontSize: 50,
-    textAlign: 'center',
+  
+  slider: {
+    marginTop: 2,
   },
 });
