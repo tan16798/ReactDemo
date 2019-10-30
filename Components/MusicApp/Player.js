@@ -6,7 +6,11 @@ import Detail from './Detail'
 import PlayBar from './PlayBar'
 import Control from './Control'
 import Video from 'react-native-video'
+var test={uri:{uri:'http://srv2.dnupload.com/Music/Album/Justin%20Bieber%20-%20Purpose%20(Deluxe%20Version)%20(320)/Justin%20Bieber%20-%20Purpose%20(Deluxe%20Version)%20128/05%20Love%20Yourself.mp3'
+},
+require:require("../image/SimpleLoveWnRemix-Obito-6098497.mp3")
 
+}
 export default class Player extends Component{
     constructor(props){
         super(props)
@@ -16,6 +20,8 @@ export default class Player extends Component{
             suffle:false,
             tracklength:1,
             currentTime:0,
+            isChanging:false,
+            selectTrack:0
         }
     }
     move(time){
@@ -23,18 +29,51 @@ export default class Player extends Component{
                        paused:false                         });
         this.refs.player.seek(Math.round(time));
     }
-    
+    next(){
+        if(this.state.selectTrack < this.props.playlist.length-1){
+            this.refs.player.seek(0)
+            this.setState({isChanging:true});
+            setTimeout(()=>{
+                this.setState({
+                    paused:true,
+                    currentTime:0,
+                    tracklength:1,
+                    selectTrack:this.state.selectTrack+1
+                },0)
+            })
+
+        }
+    }
+    previous(){
+        if(this.state.currentTime<10 && this.state.selectTrack>0){
+            this.refs.player.seek(0)
+            this.setState({isChanging:true});
+            setTimeout(()=>{
+                this.setState({
+                    paused:true,
+                    currentTime:0,
+                    tracklength:1,
+                    selectTrack:this.state.selectTrack-1
+                },0)
+            })
+        }
+        else {
+            this.refs.player.seek(0)
+            this.setState({currentTime:0});
+        }
+    }
     render(){
         return(
-        
+            this.state.isChanging?null:
             <View style={styles.container}> 
-                <Video source={require('../image/CoThamKhongVe-PhatHoJokesBiiThien-6067247.mp3')}
+                <Video source={test.require}
                 ref='player'
                   onBuffer={this.onBuffer}                // Callback when remote video is buffering
        onEnd={this.onEnd}                      // Callback when playback finishes
        onError={this.videoError} 
        paused={this.state.paused}
-       onLoad={(data)=>{this.setState({tracklength:Math.floor(data.duration)})}}
+       repeat={this.state.repeat}
+       onLoad={(data)=>{this.setState({tracklength:Math.floor(data.duration)});console.log(data.duration)}}
        onProgress={(data)=>{this.setState({currentTime:Math.floor(data.currentTime)})}}
                    />
                  <Header message ='Playing the music'/>
@@ -48,7 +87,10 @@ export default class Player extends Component{
                 <Control pause={this.state.paused} 
                         repeat={this.state.repeat}
                         suffle={this.state.suffle}
+                        onPressRepeat={()=>{this.setState({repeat:!this.state.repeat})}}
                         onPressPlay={()=>{this.setState({paused:!this.state.paused})}}
+                        onPressNext={this.next.bind(this)}
+                        onPressPrevious={this.previous.bind(this)}
                 /> 
                 </View>
             
