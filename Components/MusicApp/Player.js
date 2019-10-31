@@ -66,7 +66,7 @@ export default class Player extends Component{
         return(
             this.state.isChanging?null:
             <View style={styles.container}> 
-                <Video source={test.require}
+                <Video source={{uri:"spotify:track:3Qm86XLflmIXVm1wcwkgDK"}}
                 ref='player'
                   onBuffer={this.onBuffer}                // Callback when remote video is buffering
        onEnd={this.onEnd}                      // Callback when playback finishes
