@@ -1,7 +1,10 @@
 import {AppRegistry,View,ImageBackground,Text,TouchableOpacity} from 'react-native';
 import React, {Component} from 'react';
 
+
 import Player from './Components/MusicApp/Player'
+import SpotifyInit from './Components/MusicApp/SpotifyInit'
+import Spotify from 'rn-spotify-sdk/src/Spotify';
 var Track=[
   {
     title: 'Stressed Out',
@@ -32,7 +35,8 @@ export default class AppMusic extends Component{
     render(){
         return(
             <View style={styles.container} >
-              <Player></Player>
+              {/* <Player></Player>  */}
+              <SpotifyInit/>
             </View>
         );
     }
